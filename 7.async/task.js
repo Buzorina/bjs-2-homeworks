@@ -5,16 +5,22 @@ class AlarmClock {
 	}
 
 	addClock(time, callback) {
-		if (time === null) {
-			throw new Error("Отсутствуют обязательные аргументы");
-		} else if (callback === undefined) {
+		if (time === null || callback === undefined) {
 			throw new Error("Отсутствуют обязательные аргументы");
 		}
-		for (let alarm of this.alarmCollection) {
+
+
+		this.alarmCollection.some((alarm) => {
 			if (alarm.time === time) {
 				console.warn("Уже присутствует звонок на это же время");
 			}
-		}
+		});
+
+
+
+
+
+
 		const obj = {
 			time,
 			callback,
